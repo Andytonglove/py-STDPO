@@ -65,8 +65,8 @@ yres = cell * -1
 # Starting point for the
 # flood inundation
 # 淹没中心点，这里通过地理坐标计算得到像素坐标
-cx = 72
-cy = 37
+cx = 72.25
+cy = 37.25
 sx, sy = coord2pixel(cx, cy, cols, rows, lx, ly, cell)  # 原像素坐标：2582 2057
 
 # 这里确定淹没高程，从种子点参数增加一定高度读出

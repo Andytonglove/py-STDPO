@@ -18,3 +18,16 @@ ImportError: DLL load failed: 找不到指定的模块。
 flood淹没中心点选取：
 cx = 72
 cy = 37
+filledval = 3964
+
+cx = 72.5
+cy = 37.5
+
+cx = 72.25
+cy = 37.25
+
+cx = 72.125
+cy = 37.125
+
+cx = 72.25
+cy = 37.25
