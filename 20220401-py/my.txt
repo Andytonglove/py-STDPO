@@ -1,0 +1,2 @@
+更新一下numpy库和gdal支持，导包需要用osgeo
+pip install --upgrade numpy

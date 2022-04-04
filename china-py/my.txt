@@ -1,0 +1,10 @@
+ogr2ogr转换shp文件为geojson，并且删去头尾
+ogr2ogr -f "GeoJSON" D:\CodeWorkSpace\MyPythonWorkSpace\china-py\china.geojson D:\CodeWorkSpace\MyPythonWorkSpace\china-py\china.shp
+
+启动mongodb
+net start MongoDB
+mongo
+Ctrl+C退出
+
+导入数据库
+mongoimport --db guanzian --collection china --jsonArray --file D:\CodeWorkSpace\MyPythonWorkSpace\china-py\china.geojson

@@ -1,0 +1,12 @@
+# 忽略所有的资源文件
+.idea/
+.vscode/
+*.jpg
+*.asc
+
+screenshot/
+*.dbf
+*.geojson
+*.shp
+*.shx
+*.png
