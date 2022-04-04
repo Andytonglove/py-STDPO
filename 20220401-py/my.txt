@@ -1,4 +1,16 @@
 更新一下numpy库和gdal支持，导包需要用osgeo
 pip install --upgrade numpy
 
-这里在pycharm内运行是没有问题的，但是在vscode中运行会对gdal报错：DLL load failed: 找不到指定的模块。
+这里classify在pycharm内运行是没有问题的，但是在vscode中运行会对gdal报错：
+Traceback (most recent call last):
+  File "d:/CodeWorkSpace/MyPythonWorkSpace/20220401-py/0605-classify.py", line 1, in <module>
+    from osgeo import gdal_array
+  File "D:\Anaconda3\envs\pytorch\lib\site-packages\osgeo\__init__.py", line 21, in <module>
+    _gdal = swig_import_helper()
+  File "D:\Anaconda3\envs\pytorch\lib\site-packages\osgeo\__init__.py", line 17, in swig_import_helper
+    _mod = imp.load_module('_gdal', fp, pathname, description)
+  File "D:\Anaconda3\envs\pytorch\lib\imp.py", line 243, in load_module
+    return load_dynamic(name, filename, file)
+  File "D:\Anaconda3\envs\pytorch\lib\imp.py", line 343, in load_dynamic
+    return _load(spec)
+ImportError: DLL load failed: 找不到指定的模块。
