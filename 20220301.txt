@@ -1,0 +1,48 @@
+作业一：
+1.安装postgis数据库，用ogr2ogr命令行模式以及qgis将china.shp数据导入到数据库中，并用qgis连接数据库进行显示；
+2.用ogr2ogr命令行模式，将1中导入的数据库图层导出到geojson数据文件中，并将导出文件用qgis打开显示；
+3.将s51.tif数据用命令raster2pgsql导入到数据库中，并利用qgis连接数据库打开显示；
+4.将3中导入到postgis的s51数据，用gdal_translate导出到本地文件夹中，然后用qgis打开全部导出文件进行显示。
+
+{
+
+CREATE EXTENSION postgis;
+
+CREATE EXTENSION postgis_raster;
+
+} 
+
+{
+
+conda activate pytorch
+
+ogr2ogr -f "PostgreSQL" PG:"host=localhost dbname=xxxxxx user=postgres password=xxxxxx" C:\Users\14684\Desktop\20220301\china.shp
+
+} 
+
+{
+
+ogr2ogr -f "GeoJSON" C:\Users\14684\Desktop\20220301\out-china.geojson PG:" host=localhost dbname=xxxxxx user=postgres password=xxxxxx" china
+
+}
+
+{
+
+raster2gpsql -s 4326 -I -C -M C:\Users\14684\Desktop\20220301\S51.tif -F -t 256x256 public.dem | psql -h localhost -p 5432 -d xxxxxx -U postgres
+
+gdal_translate -of GTiff -co "TILED=YES" C:\Users\14684\Desktop\20220301\S51.ASC C:\Users\14684\Desktop\20220301\S51.tif
+
+}
+
+{
+
+gdal_translate -sds -of GTiff "PG:dbname=xxxxxx schema=public table=dem user=postgres password=xxxxxx" C:\Users\14684\Desktop\20220301\output-S51.tif
+
+}
+
+
+
+
+
+
+ 
