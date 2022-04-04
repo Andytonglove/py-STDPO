@@ -4,9 +4,12 @@ import pymongo
 myclient = pymongo.MongoClient('mongodb://localhost:27017/')
 
 dblist = myclient.list_database_names()
-if "guanzian" in dblist:
+
+dbanme = "yourdbname"
+
+if dbanme in dblist:
     print("数据库已存在！")
-    db = myclient['guanzian']
+    db = myclient[dbanme]
 
     # 用直线（84.26，27.34）--（108.95，45.22）进行intersect查询
     result = db.get_collection('china').find({

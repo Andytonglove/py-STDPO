@@ -7,4 +7,4 @@ mongo
 Ctrl+C退出
 
 导入数据库
-mongoimport --db guanzian --collection china --jsonArray --file D:\CodeWorkSpace\MyPythonWorkSpace\china-py\china.geojson
+mongoimport --db dbname --collection china --jsonArray --file D:\CodeWorkSpace\MyPythonWorkSpace\china-py\china.geojson
