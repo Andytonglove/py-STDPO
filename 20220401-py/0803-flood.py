@@ -40,15 +40,19 @@ def floodFill(c, r, mask):
     return flood
 
 
+def coord2pixel(coordx, coordy, ncols, nrows, xllcorner, yllcorner, cellsize):
+    # 从地理坐标计算得到像素坐标 函数
+    sx = (int)((coordx-xllcorner)/cellsize)
+    sy = (int)((coordy-yllcorner)/cellsize)
+    return (int)(sx-1) if sx <= ncols else (int)(ncols-1), (int)(sy-1) if sy <= nrows else (int)(nrows-1)
+
+
 source = "srtm.asc"
 target = "srtm-flood.asc"
 
 print("Opening image...")
 img = np.loadtxt(source, skiprows=6)
 print("Image opened")
-
-a = np.where(img < 70, 1, 0)
-print("Image masked")
 
 # Parse the headr using a loop and
 # the built-in linecache module
@@ -60,9 +64,17 @@ yres = cell * -1
 
 # Starting point for the
 # flood inundation
-sx = 2582
-sy = 2057
+# 淹没中心点，这里通过地理坐标计算得到像素坐标
+cx = 72
+cy = 37
+sx, sy = coord2pixel(cx, cy, cols, rows, lx, ly, cell)  # 原像素坐标：2582 2057
 
+# 这里确定淹没高程，从种子点参数增加一定高度读出
+filledval = img[sx][sy]+10
+a = np.where(img < filledval, 1, 0)
+print("Image masked")
+
+# 开始计算淹没
 print("Beginning flood fill")
 fld = floodFill(sx, sy, a)
 print("Finished Flood fill")
