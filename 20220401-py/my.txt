@@ -1,2 +1,4 @@
 更新一下numpy库和gdal支持，导包需要用osgeo
 pip install --upgrade numpy
+
+这里在pycharm内运行是没有问题的，但是在vscode中运行会对gdal报错：DLL load failed: 找不到指定的模块。

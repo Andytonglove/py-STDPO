@@ -1,24 +1,31 @@
 from osgeo import gdal_array
+import random
+
+# 分类类别输入
+print("请输入分类的类别数(5、10、15、20):")
+cnt = input()
 
 # Input file name (thermal image)
 src = "GF1.jpg"
 
 # Output file name
-tgt = "GF1-classified.jpg"
+tgt = "GF1-classified-"+cnt+".jpg"
 
 # Load the image into numpy using gdal
 srcArr = gdal_array.LoadFile(src)
 
-# Split the histogram into 20 bins as our classes
-classes = gdal_array.numpy.histogram(srcArr, bins=20)[1]
+# Split the histogram into cnt bins as our classes
+classes = gdal_array.numpy.histogram(srcArr, bins=int(cnt))[1]
 
 # Color look-up table (LUT) - must be len(classes)+1.
 # Specified as R, G, B tuples
-lut = [[255, 0, 0], [191, 48, 48], [166, 0, 0], [255, 64, 64], [255, 115, 115],
-       [255, 116, 0], [191, 113, 48], [255, 178, 115], [0, 153, 153],
-       [29, 115, 115], [0, 99, 99], [166, 75, 0], [0, 204, 0], [51, 204, 204],
-       [255, 150, 64], [92, 204, 204], [38, 153, 38], [0, 133, 0],
-       [57, 230, 57], [103, 230, 103], [184, 138, 0]]
+lut = []
+# 随机生成颜色列表参数
+for i in range(len(classes)+1):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    lut.append([r, g, b])
 
 # Starting value for classification
 start = 1
