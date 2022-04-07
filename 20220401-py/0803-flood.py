@@ -42,6 +42,7 @@ def floodFill(c, r, mask):
 
 def coord2pixel(coordx, coordy, ncols, nrows, xllcorner, yllcorner, cellsize):
     # 从地理坐标计算得到像素坐标 函数
+    # 这里的坐标是以左下角为原点的，存在一些bug，y应该反向减去，并且可以考虑+0.5便于四舍五入
     sx = (int)((coordx-xllcorner)/cellsize)
     sy = (int)((coordy-yllcorner)/cellsize)
     return (int)(sx-1) if sx <= ncols else (int)(ncols-1), (int)(sy-1) if sy <= nrows else (int)(nrows-1)
