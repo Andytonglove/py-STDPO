@@ -2,7 +2,7 @@
 
 # https://github.com/GeospatialPython/Learn/raw/master/thermal.zip
 
-from gdal import gdal_array
+from osgeo import gdal_array
 
 # Input file name (thermal image)
 src = "thermal.tif"
@@ -39,5 +39,6 @@ for i in range(len(classes)):
     start = classes[i]+1
 
 # Save the image
-output = gdal_array.SaveArray(rgb.astype(gdal_array.numpy.uint8), tgt, format="JPEG")
+output = gdal_array.SaveArray(rgb.astype(
+    gdal_array.numpy.uint8), tgt, format="JPEG")
 output = None

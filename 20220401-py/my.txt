@@ -1,5 +1,6 @@
 更新一下numpy库和gdal支持，导包需要用osgeo
 pip install --upgrade numpy
+ps，这个一定要更新numpy版本，然后装对应3.6的轮子版本的gdal，解决下面的运行问题
 
 这里classify在pycharm内运行是没有问题的，但是在vscode中运行会对gdal报错：
 Traceback (most recent call last):
