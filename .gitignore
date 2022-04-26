@@ -11,3 +11,6 @@ screenshot/
 *.shx
 *.png
 *.qgz
+*.qpkg
+
+final/
