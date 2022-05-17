@@ -15,3 +15,4 @@ screenshot/
 
 final/*
 !final/*.py
+!final/PatternLearning-matlab
