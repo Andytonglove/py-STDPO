@@ -13,4 +13,5 @@ screenshot/
 *.qgz
 *.qpkg
 
-final/
+final/*
+!final/*.py
